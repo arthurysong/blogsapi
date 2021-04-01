@@ -65,4 +65,10 @@ defmodule BlogsApiWeb.BlogController do
       send_resp(conn, :no_content, "")
     end
   end
+
+  def dec_likes_of_blog(conn, %{"id" => id}) do
+    with {1, nil} <- Resources.dec_likes(id) do
+      send_resp(conn, :no_content, "")
+    end
+  end
 end

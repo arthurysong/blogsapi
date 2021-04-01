@@ -62,6 +62,17 @@ defmodule BlogsApi.Resources do\
     |> Repo.update_all([])
   end
 
+  def dec_likes(id) do
+    from(blog in Blog,
+      update: [
+        inc: [
+          likes: -1
+        ]
+      ],
+      where: blog.id == ^id
+    )
+    |> Repo.update_all([])
+  end
 
 
 
